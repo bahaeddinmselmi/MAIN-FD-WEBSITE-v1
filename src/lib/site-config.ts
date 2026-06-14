@@ -1,26 +1,26 @@
 // ═══════════════════════════════════════════════════════════════════
-// Site Configuration — Location Voitures Tunisie
+// Site Configuration — Location Voiture Tunisie 24/7
 // ═══════════════════════════════════════════════════════════════════
 
 export const siteConfig = {
     // ── Brand Identity ─────────────────────────────────────────────
     brand: {
-        name: "Location Voitures Tunisie",
-        nameShort: "LVT",
-        nameUpper: "LOCATION VOITURES TUNISIE",
-        slug: "locationvoitures-tunisie",
+        name: "Location Voiture Tunisie 24/7",
+        nameShort: "LVT-24/7",
+        nameUpper: "LOCATION VOITURE TUNISIE 24/7",
+        slug: "location-voiture-tunisie-24-7",
         foundingYear: 2009,
-        description: "Louez une voiture en Tunisie au meilleur prix. Djerba, Tunis, Hammamet, Monastir.",
+        description: "Louez une voiture en Tunisie au meilleur prix. Djerba, Tunis, Hammamet, Monastir. Service disponible 24h/24 et 7j/7.",
     },
 
     // ── Contact Information ────────────────────────────────────────
     contact: {
         phone: {
-            display: "+216 23 179 016",
-            link: "+21623179016",
-            whatsapp: "21623179016",
+            display: "+216 97 955 896",
+            link: "+21697955896",
+            whatsapp: "21697955896",
         },
-        email: "contact@locationvoitures-tunisie.com",
+        email: "nhrentcar.tn@gmail.com",
         address: {
             street: "Aeroport Tunis-Carthage",
             city: "Tunis",
@@ -37,15 +37,15 @@ export const siteConfig = {
 
     // ── Domain & URLs ──────────────────────────────────────────────
     url: {
-        domain: "locationvoitures-tunisie.com",
-        baseUrl: "https://locationvoitures-tunisie.com",
-        googleReview: "https://g.page/r/CdmeTUTRPsPKEBM/review",
+        domain: "locationvoituretunisie24-7.com",
+        baseUrl: "https://locationvoituretunisie24-7.com",
+        googleReview: "",
     },
 
     // ── Social Media ───────────────────────────────────────────────
     social: {
-        facebook: "https://www.facebook.com/locationvoiturestunisie",
-        instagram: "https://www.instagram.com/locationvoiturestunisie",
+        facebook: "",
+        instagram: "",
     },
 
     // ── Logo Paths ─────────────────────────────────────────────────
@@ -79,8 +79,8 @@ export const siteConfig = {
 
     // ── SEO ────────────────────────────────────────────────────────
     seo: {
-        titleDefault: "Location Voitures Tunisie – Pas Cher & Rapide",
-        titleTemplate: "%s | Location Voitures Tunisie",
+        titleDefault: "Location Voiture Tunisie 24/7 – Pas Cher & Rapide",
+        titleTemplate: "%s | Location Voiture Tunisie 24/7",
         description: "Louez une voiture en Tunisie au meilleur prix. Djerba, Tunis, Hammamet, Monastir.",
         keywords: [
             "location voiture tunisie",
@@ -103,20 +103,20 @@ export const siteConfig = {
 
     // ── Booking ────────────────────────────────────────────────────
     booking: {
-        storageKey: "lvt-booking-storage",
-        reviewStorageKey: "lvt_reviewed",
+        storageKey: "lvt247-booking-storage",
+        reviewStorageKey: "lvt247_reviewed",
         defaultLocation: "Tunis, Tunisie",
     },
 
-    // ── Telegram Bot ─────────────────────────────────────────────────
+    // ── Telegram Bot (configure via admin dashboard, not here) ──────
     telegram: {
-        botToken: "YOUR_BOT_TOKEN",
-        chatId: "YOUR_CHAT_ID",
+        botToken: "",
+        chatId: "",
     },
 
     // ── Email ─────────────────────────────────────────────────────────
     email: {
-        to: "contact@locationvoitures-tunisie.com",
+        to: "nhrentcar.tn@gmail.com",
     },
 
     // ── Theme / Colors ─────────────────────────────────────────────

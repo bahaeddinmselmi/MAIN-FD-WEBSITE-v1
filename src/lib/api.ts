@@ -1,7 +1,7 @@
 import 'server-only';
 
 const BACKEND_API_URL = process.env.BACKEND_API_URL || 'http://localhost:3001/api/v1';
-const SITE_SLUG = process.env.SITE_SLUG || 'locationvoitures-tunisie';
+const SITE_SLUG = process.env.SITE_SLUG || 'location-voiture-tunisie-24-7';
 const SITE_API_KEY = process.env.SITE_API_KEY || '';
 
 /**
