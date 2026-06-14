@@ -3,7 +3,8 @@
 const SITE_DOMAIN = process.env.SITE_DOMAIN || 'locationvoituretunisie24-7.com';
 
 const nextConfig = {
-    output: 'standalone',
+    // standalone is for Docker/VPS self-hosting — Vercel manages its own output
+    output: process.env.VERCEL ? undefined : 'standalone',
     async redirects() {
         return [
             {
