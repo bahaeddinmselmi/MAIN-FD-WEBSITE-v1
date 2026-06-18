@@ -4,6 +4,8 @@
 
 export const siteConfig = {
     // ── Brand Identity ─────────────────────────────────────────────
+    lang: "fr",
+
     brand: {
         name: "Location Voiture Tunisie 24/7",
         nameShort: "LVT-24/7",
