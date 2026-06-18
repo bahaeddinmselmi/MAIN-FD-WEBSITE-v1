@@ -16,11 +16,11 @@ export const siteConfig = {
     // ── Contact Information ────────────────────────────────────────
     contact: {
         phone: {
-            display: "+216 97 955 896",
-            link: "+21697955896",
-            whatsapp: "21697955896",
+            display: "+216 23 179 016",
+            link: "+21623179016",
+            whatsapp: "21623179016",
         },
-        email: "nhrentcar.tn@gmail.com",
+        email: "contact-booking-rentalcars@gmail.com",
         address: {
             street: "Aeroport Tunis-Carthage",
             city: "Tunis",
@@ -116,7 +116,7 @@ export const siteConfig = {
 
     // ── Email ─────────────────────────────────────────────────────────
     email: {
-        to: "nhrentcar.tn@gmail.com",
+        to: "contact-booking-rentalcars@gmail.com",
     },
 
     // ── Theme / Colors ─────────────────────────────────────────────
