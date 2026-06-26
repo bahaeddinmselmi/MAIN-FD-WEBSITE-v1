@@ -40,7 +40,7 @@ export function Footer({ phoneDisplay, phoneWhatsappUrl }: FooterProps = {}) {
     const displayPhone = phoneDisplay ?? siteConfig.contact.phone.display;
     const callUrl = phoneWhatsappUrl ?? whatsappUrl;
     return (
-        <footer className="bg-blue-950 text-white">
+        <footer className="bg-[var(--footer-bg,#172554)] text-white">
             <div className="max-w-screen-2xl mx-auto px-6 md:px-12 py-24">
                 {/* 4-column grid */}
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12">

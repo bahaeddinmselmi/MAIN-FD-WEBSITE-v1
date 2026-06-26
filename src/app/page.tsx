@@ -1,24 +1,25 @@
 import { getCars, Car } from "@/lib/data";
-import { CarCard } from "@/components/car-card";
-import { HeroSection } from "@/components/hero-section";
+import { ThemedCarCard } from "@/components/cards";
+import { ThemedHero } from "@/components/hero";
 import { FloatingSearch } from "@/components/floating-search";
 import { TrustBadges } from "@/components/trust-badges";
 import { PromoBanner } from "@/components/promo-banner";
 import { ServicesScroll } from "@/components/services-scroll";
 import { GoogleReviews } from "@/components/google-reviews";
 import { LocalBusinessSchema, WebsiteSchema, FAQSchema } from "@/components/seo-schemas";
-import { getFaqs } from "@/lib/get-site-data";
+import { getFaqs, getSiteConfig } from "@/lib/get-site-data";
 import Link from "next/link";
 
 export default async function Home() {
-    const [cars, faqs] = await Promise.all([getCars(), getFaqs()]);
+    const [cars, faqs, dbConfig] = await Promise.all([getCars(), getFaqs(), getSiteConfig()]);
+    const layoutTemplate = (dbConfig?.layoutTemplate as string | null | undefined) ?? 'classic';
     const featuredCars = cars.slice(0, 6);
     const displayFaqs = faqs.slice(0, 8);
 
     return (
         <div className="flex flex-col">
             {/* 1. Hero Section */}
-            <HeroSection />
+            <ThemedHero layoutTemplate={layoutTemplate} />
 
             {/* 2. Floating Booking Widget */}
             <FloatingSearch />
@@ -51,8 +52,9 @@ export default async function Home() {
                     {/* 3-column car grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {featuredCars.map((car: Car) => (
-                            <CarCard
+                            <ThemedCarCard
                                 key={car.id}
+                                layoutTemplate={layoutTemplate}
                                 id={car.id}
                                 title={car.title}
                                 slug={car.slug}

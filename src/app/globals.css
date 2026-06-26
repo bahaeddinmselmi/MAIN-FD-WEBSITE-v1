@@ -53,6 +53,7 @@
 :root {
     --background: #f7f9fc;
     --foreground: #191c1e;
+    --footer-bg: #172554;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -70,6 +71,7 @@
     --color-accent-dark: #047857;
     --font-headline: var(--font-headline-modern, "Inter", system-ui, sans-serif);
     --font-body: var(--font-body-modern, "Inter", system-ui, sans-serif);
+    --footer-bg: #022c22;
 }
 
 [data-theme="luxury"] {
@@ -82,6 +84,7 @@
     --color-accent-dark: #92400e;
     --font-headline: var(--font-headline-luxury, "Playfair Display", Georgia, serif);
     --font-body: var(--font-body-luxury, "Lato", system-ui, sans-serif);
+    --footer-bg: #0a0a0a;
 }
 
 [data-theme="bold"] {
@@ -94,6 +97,7 @@
     --color-accent-dark: #b91c1c;
     --font-headline: var(--font-headline-bold, "Barlow Condensed", system-ui, sans-serif);
     --font-body: var(--font-body-bold, "Barlow", system-ui, sans-serif);
+    --footer-bg: #0f0f0f;
 }
 
 [data-theme="fresh"] {
@@ -106,6 +110,7 @@
     --color-accent-dark: #ea580c;
     --font-headline: var(--font-headline-fresh, "Nunito", system-ui, sans-serif);
     --font-body: var(--font-body-fresh, "Nunito", system-ui, sans-serif);
+    --footer-bg: #431407;
 }
 
 /* ═══════════════════════════════════════════════════════════════════

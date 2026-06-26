@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Plus_Jakarta_Sans, Inter, Playfair_Display, Lato, Barlow_Condensed, Barlow, Nunito } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/navbar";
+import { ThemedNavbar } from "@/components/navbar/index";
 import { Footer } from "@/components/footer";
 import { CurrencyProvider } from "@/context/currency-context";
 import { siteConfig, ogImageUrl } from "@/lib/site-config";
@@ -176,7 +176,7 @@ export default async function RootLayout({
             </head>
             <body className={`${allFontVars} font-body`}>
                 <CurrencyProvider>
-                    <Navbar phoneDisplay={phoneDisplay} phoneWhatsappUrl={phoneWhatsappUrl} />
+                    <ThemedNavbar layoutTemplate={layoutTemplate} phoneDisplay={phoneDisplay} phoneWhatsappUrl={phoneWhatsappUrl} />
                     <main>{children}</main>
                     <Footer phoneDisplay={phoneDisplay} phoneWhatsappUrl={phoneWhatsappUrl} />
                 </CurrencyProvider>
