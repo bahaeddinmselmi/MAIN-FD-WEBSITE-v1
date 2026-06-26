@@ -56,6 +56,59 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════
+   Theme Overrides — applied via data-theme attribute on <html>
+   classic = default (no override needed, uses @theme vars above)
+   ═══════════════════════════════════════════════════════════════════ */
+
+[data-theme="modern"] {
+    --color-primary: #065f46;
+    --color-primary-container: #047857;
+    --color-primary-fixed: #d1fae5;
+    --color-on-primary: #ffffff;
+    --color-on-primary-container: #6ee7b7;
+    --color-accent: #065f46;
+    --color-accent-dark: #047857;
+    --font-headline: var(--font-headline-modern, "Inter", system-ui, sans-serif);
+    --font-body: var(--font-body-modern, "Inter", system-ui, sans-serif);
+}
+
+[data-theme="luxury"] {
+    --color-primary: #18181b;
+    --color-primary-container: #27272a;
+    --color-primary-fixed: #f5f0e8;
+    --color-on-primary: #ffffff;
+    --color-on-primary-container: #d97706;
+    --color-accent: #b45309;
+    --color-accent-dark: #92400e;
+    --font-headline: var(--font-headline-luxury, "Playfair Display", Georgia, serif);
+    --font-body: var(--font-body-luxury, "Lato", system-ui, sans-serif);
+}
+
+[data-theme="bold"] {
+    --color-primary: #991b1b;
+    --color-primary-container: #b91c1c;
+    --color-primary-fixed: #fee2e2;
+    --color-on-primary: #ffffff;
+    --color-on-primary-container: #fca5a5;
+    --color-accent: #dc2626;
+    --color-accent-dark: #b91c1c;
+    --font-headline: var(--font-headline-bold, "Barlow Condensed", system-ui, sans-serif);
+    --font-body: var(--font-body-bold, "Barlow", system-ui, sans-serif);
+}
+
+[data-theme="fresh"] {
+    --color-primary: #9a3412;
+    --color-primary-container: #c2410c;
+    --color-primary-fixed: #ffedd5;
+    --color-on-primary: #ffffff;
+    --color-on-primary-container: #fdba74;
+    --color-accent: #f97316;
+    --color-accent-dark: #ea580c;
+    --font-headline: var(--font-headline-fresh, "Nunito", system-ui, sans-serif);
+    --font-body: var(--font-body-fresh, "Nunito", system-ui, sans-serif);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
    Base Styles
    ═══════════════════════════════════════════════════════════════════ */
 

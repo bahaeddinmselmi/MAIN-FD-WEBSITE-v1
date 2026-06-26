@@ -58,7 +58,9 @@ export function LocalBusinessSchema({
         "image": `${siteConfig.url.baseUrl}/images/hero-cars.jpg`,
         "telephone": telephone,
         "priceRange": priceRange,
-        "foundingDate": "2009",
+        "foundingDate": `${siteConfig.brand.foundingYear || 2009}-01-01`,
+        "dateCreated": `${siteConfig.brand.foundingYear || 2009}-01-01`,
+        "copyrightYear": siteConfig.brand.foundingYear || 2009,
         "address": {
             "@type": "PostalAddress",
             ...address
@@ -67,12 +69,12 @@ export function LocalBusinessSchema({
             "@type": "GeoCoordinates",
             ...geo
         },
-        "openingHoursSpecification": openingHours.map(hours => ({
+        "openingHoursSpecification": [{
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
             "opens": "00:00",
             "closes": "23:59"
-        })),
+        }],
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": rating.ratingValue,
@@ -245,7 +247,7 @@ export function ProductSchema({
             "priceCurrency": currency,
             "price": price,
             "availability": availability,
-            "priceValidUntil": new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+            "priceValidUntil": `${new Date().getFullYear() + 1}-12-31`
         }
     };
 

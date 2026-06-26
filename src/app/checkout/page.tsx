@@ -105,6 +105,7 @@ function CheckoutContent() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [isClient, setIsClient] = useState(false);
+    const [formOpenedAt] = useState(() => Date.now());
 
     useEffect(() => {
         setIsClient(true);
@@ -142,7 +143,7 @@ function CheckoutContent() {
     };
 
     const totalDays = calculateDays();
-    const pricePerDay = car?.price || 108;
+    const pricePerDay = parseFloat(String(car?.price || '0')) || 108;
     const carTotal = pricePerDay * totalDays;
 
     // Calculate upsells total
@@ -179,6 +180,11 @@ function CheckoutContent() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (honeypot) return;
+        // Time guard: bots submit instantly; real users take at least 3 seconds
+        if (Date.now() - formOpenedAt < 3000) {
+            setError('Veuillez vérifier vos informations et réessayer.');
+            return;
+        }
 
         setLoading(true);
         setError('');

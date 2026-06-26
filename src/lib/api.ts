@@ -1,8 +1,11 @@
 import 'server-only';
 
-const BACKEND_API_URL = process.env.BACKEND_API_URL || 'http://localhost:3001/api/v1';
-const SITE_SLUG = process.env.SITE_SLUG || 'location-voiture-tunisie-24-7';
-const SITE_API_KEY = process.env.SITE_API_KEY || '';
+// Vercel injects a leading U+FEFF BOM into env var values — strip it everywhere.
+const stripBom = (s: string) => s.replace(/^﻿/, '').trim();
+
+const BACKEND_API_URL = stripBom(process.env.BACKEND_API_URL || 'http://localhost:3001/api/v1');
+const SITE_SLUG      = stripBom(process.env.SITE_SLUG      || 'location-voiture-tunisie-24-7');
+const SITE_API_KEY   = stripBom(process.env.SITE_API_KEY   || '');
 
 /**
  * Server-side fetch utility for the backend API.
@@ -22,8 +25,8 @@ export async function backendFetch<T = unknown>(
             'X-Api-Key': SITE_API_KEY,
             ...options.headers,
         },
-        // No caching — always fetch fresh data from backend
-        cache: 'no-store',
+        // ISR: cache for 5 minutes, revalidate in the background
+        next: { revalidate: 300 },
     });
 
     if (!response.ok) {

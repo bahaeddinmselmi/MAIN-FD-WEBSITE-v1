@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Plus_Jakarta_Sans } from "next/font/google";
+import { Manrope, Plus_Jakarta_Sans, Inter, Playfair_Display, Lato, Barlow_Condensed, Barlow, Nunito } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
@@ -7,6 +7,7 @@ import { CurrencyProvider } from "@/context/currency-context";
 import { siteConfig, ogImageUrl } from "@/lib/site-config";
 import { getSiteConfig } from "@/lib/get-site-data";
 
+// ── classic theme fonts ──────────────────────────────────────────────
 const manrope = Manrope({
     subsets: ["latin"],
     weight: ["700", "800"],
@@ -18,6 +19,52 @@ const plusJakarta = Plus_Jakarta_Sans({
     subsets: ["latin"],
     weight: ["400", "500", "600", "700"],
     variable: "--font-body",
+    display: "swap",
+});
+
+// ── modern theme fonts ───────────────────────────────────────────────
+const inter = Inter({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700", "800"],
+    variable: "--font-headline-modern",
+    display: "swap",
+});
+
+// ── luxury theme fonts ───────────────────────────────────────────────
+const playfairDisplay = Playfair_Display({
+    subsets: ["latin"],
+    weight: ["400", "700"],
+    variable: "--font-headline-luxury",
+    display: "swap",
+});
+
+const lato = Lato({
+    subsets: ["latin"],
+    weight: ["400", "700"],
+    variable: "--font-body-luxury",
+    display: "swap",
+});
+
+// ── bold theme fonts ─────────────────────────────────────────────────
+const barlowCondensed = Barlow_Condensed({
+    subsets: ["latin"],
+    weight: ["600", "700", "800"],
+    variable: "--font-headline-bold",
+    display: "swap",
+});
+
+const barlow = Barlow({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+    variable: "--font-body-bold",
+    display: "swap",
+});
+
+// ── fresh theme fonts ────────────────────────────────────────────────
+const nunito = Nunito({
+    subsets: ["latin"],
+    weight: ["400", "600", "700", "800"],
+    variable: "--font-headline-fresh",
     display: "swap",
 });
 
@@ -81,13 +128,24 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    // Fetch live contact info from DB (phone, whatsapp)
+    // Fetch live config from DB
     const dbConfig = await getSiteConfig();
     const phoneDisplay: string = (dbConfig?.phoneDisplay as string | null | undefined) ?? siteConfig.contact.phone.display;
     const phoneWhatsapp: string = (dbConfig?.whatsapp as string | null | undefined) ?? siteConfig.contact.phone.whatsapp;
     const phoneWhatsappUrl: string = `https://wa.me/${phoneWhatsapp}`;
+    const layoutTemplate: string = (dbConfig?.layoutTemplate as string | null | undefined) ?? 'classic';
+
+    // All font vars applied globally; active theme selects the right one via CSS
+    const allFontVars = [
+        manrope.variable, plusJakarta.variable,
+        inter.variable,
+        playfairDisplay.variable, lato.variable,
+        barlowCondensed.variable, barlow.variable,
+        nunito.variable,
+    ].join(' ');
+
     return (
-        <html lang="fr" suppressHydrationWarning>
+        <html lang="fr" data-theme={layoutTemplate} suppressHydrationWarning>
             <head>
                 {/* Preconnect to Google Fonts for faster loading */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -116,7 +174,7 @@ export default async function RootLayout({
                     />
                 </noscript>
             </head>
-            <body className={`${manrope.variable} ${plusJakarta.variable} font-body`}>
+            <body className={`${allFontVars} font-body`}>
                 <CurrencyProvider>
                     <Navbar phoneDisplay={phoneDisplay} phoneWhatsappUrl={phoneWhatsappUrl} />
                     <main>{children}</main>

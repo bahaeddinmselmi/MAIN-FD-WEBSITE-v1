@@ -271,6 +271,7 @@ export interface SiteConfigAPI {
     telegramChatId?: string | null;
     emailTo?: string | null;
     themeColors?: Record<string, string> | null;
+    layoutTemplate?: string | null;
     [key: string]: unknown;
 }
 
@@ -281,5 +282,56 @@ export async function getSiteConfig(): Promise<SiteConfigAPI | null> {
     } catch (error) {
         console.warn('[get-site-data] Failed to fetch site config:', error);
         return null;
+    }
+}
+
+// ── Blog ─────────────────────────────────────────────────────────────
+
+export interface BlogPost {
+    id: string;
+    siteId: string;
+    title: string;
+    slug: string;
+    excerpt?: string | null;
+    content?: string | null;
+    coverImage?: string | null;
+    publishedAt: string | null;
+    updatedAt?: string | null;
+    status: string;
+    metaTitle?: string | null;
+    metaDescription?: string | null;
+    tags: string[];
+}
+
+export async function getBlogPosts(page = 1, limit = 10): Promise<BlogPost[]> {
+    try {
+        return await publicFetch<BlogPost[]>(`/blog?page=${page}&limit=${limit}`);
+    } catch (error) {
+        console.warn('[get-site-data] Failed to fetch blog posts:', error);
+        return [];
+    }
+}
+
+export async function getBlogPost(slug: string): Promise<BlogPost | null> {
+    try {
+        return await publicFetch<BlogPost>(`/blog/${slug}`);
+    } catch (error) {
+        console.warn(`[get-site-data] Failed to fetch blog post "${slug}":`, error);
+        return null;
+    }
+}
+
+// ── Pricing Season ────────────────────────────────────────────────────
+
+export interface PricingSeason {
+    multiplier: number;
+    name: string | null;
+}
+
+export async function getPricingSeason(): Promise<PricingSeason> {
+    try {
+        return await publicFetch<PricingSeason>('/pricing-season');
+    } catch {
+        return { multiplier: 1.0, name: null };
     }
 }

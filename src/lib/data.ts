@@ -2,6 +2,7 @@ import 'server-only';
 import fs from 'fs/promises';
 import path from 'path';
 import { publicFetch } from './api';
+import { getPricingSeason } from './get-site-data';
 
 export interface Car {
     id: string;
@@ -84,7 +85,7 @@ function transformBackendCar(raw: BackendCar): Car {
     // imagePath from DB is like "CARS-IMAGES/01_Suzuki_Swift.png"
     // or legacy "images/voitures/name.png" — both are relative to /images/cars-data/
     const imagePath = raw.imagePath
-        ? (raw.imagePath.startsWith('/') ? raw.imagePath : `/images/cars-data/${raw.imagePath}`)
+        ? (raw.imagePath.startsWith('/') || raw.imagePath.startsWith('http') ? raw.imagePath : `/images/cars-data/${raw.imagePath}`)
         : `/images/cars-data/CARS-IMAGES/01_Suzuki_Swift.png`;
 
     const deposit = raw.deposit ? Math.round(parseFloat(raw.deposit)) : 2000;
@@ -208,24 +209,35 @@ const DEFAULT_PRICES_3DAYS: Record<number, number> = {
 // ============================
 
 export async function getCars(): Promise<Car[]> {
-    try {
-        const backendCars = await publicFetch<BackendCar[]>('/cars');
-        if (backendCars && backendCars.length > 0) {
-            return backendCars.map((bc) => {
-                const car = transformBackendCar(bc);
-                // Apply default prices (backend pricing calc is separate)
-                const defaultPrice = DEFAULT_PRICES_3DAYS[bc.displayOrder] || 400;
-                car.price3Days = defaultPrice;
-                car.price = String(Math.round(defaultPrice / 3));
-                return car;
-            });
-        }
-    } catch (error) {
-        console.warn('Backend API unavailable, falling back to local cars.json:', error);
+    // Fetch cars and seasonal pricing in parallel
+    const [backendCars, season] = await Promise.allSettled([
+        publicFetch<BackendCar[]>('/cars'),
+        getPricingSeason(),
+    ]);
+
+    const multiplier = season.status === 'fulfilled' ? (season.value.multiplier ?? 1.0) : 1.0;
+
+    let cars: Car[] = [];
+
+    if (backendCars.status === 'fulfilled' && backendCars.value?.length > 0) {
+        cars = backendCars.value.map((bc) => {
+            const car = transformBackendCar(bc);
+            const basePrice = DEFAULT_PRICES_3DAYS[bc.displayOrder] || 400;
+            car.price3Days = Math.round(basePrice * multiplier);
+            car.price = String(Math.round(car.price3Days / 3));
+            return car;
+        });
+    } else {
+        console.warn('Backend API unavailable, falling back to local cars.json');
+        const localCars = await getLocalCars();
+        cars = localCars.map(car => ({
+            ...car,
+            price3Days: Math.round(car.price3Days * multiplier),
+            price: String(Math.round((car.price3Days * multiplier) / 3)),
+        }));
     }
 
-    // Fallback to local file
-    return getLocalCars();
+    return cars;
 }
 
 export async function getCarBySlug(slug: string): Promise<Car | undefined> {
