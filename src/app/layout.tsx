@@ -1,3 +1,4 @@
+import type React from "react";
 import type { Metadata } from "next";
 import { Manrope, Plus_Jakarta_Sans, Inter, Playfair_Display, Lato, Barlow_Condensed, Barlow, Nunito } from "next/font/google";
 import "./globals.css";
@@ -135,6 +136,24 @@ export default async function RootLayout({
     const phoneWhatsappUrl: string = `https://wa.me/${phoneWhatsapp}`;
     const layoutTemplate: string = (dbConfig?.layoutTemplate as string | null | undefined) ?? 'classic';
 
+    // Inject admin-set themeColors as CSS vars — overrides [data-theme] preset defaults
+    const themeColors = dbConfig?.themeColors as Record<string, string> | null | undefined;
+    const cssVarStyle: Record<string, string> = {};
+    if (themeColors) {
+        const map: Record<string, string> = {
+            primary: '--color-primary',
+            primaryContainer: '--color-primary-container',
+            primaryFixed: '--color-primary-fixed',
+            onPrimary: '--color-on-primary',
+            accent: '--color-accent',
+            accentDark: '--color-accent-dark',
+            footerBg: '--footer-bg',
+        };
+        for (const [key, cssVar] of Object.entries(map)) {
+            if (themeColors[key]) cssVarStyle[cssVar] = themeColors[key];
+        }
+    }
+
     // All font vars applied globally; active theme selects the right one via CSS
     const allFontVars = [
         manrope.variable, plusJakarta.variable,
@@ -145,7 +164,7 @@ export default async function RootLayout({
     ].join(' ');
 
     return (
-        <html lang="fr" data-theme={layoutTemplate} suppressHydrationWarning>
+        <html lang="fr" data-theme={layoutTemplate} style={Object.keys(cssVarStyle).length > 0 ? cssVarStyle as React.CSSProperties : undefined} suppressHydrationWarning>
             <head>
                 {/* Preconnect to Google Fonts for faster loading */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
