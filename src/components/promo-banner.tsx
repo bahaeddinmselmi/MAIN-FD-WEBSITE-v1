@@ -4,7 +4,7 @@ export function PromoBanner() {
     return (
         <section className="bg-[#f7f9fc] py-24 px-6 md:px-12">
             <div className="max-w-screen-2xl mx-auto">
-                <div className="bg-[#00256f] rounded-2xl overflow-hidden flex flex-col md:flex-row items-center">
+                <div className="bg-[var(--color-primary)] rounded-2xl overflow-hidden flex flex-col md:flex-row items-center">
                     {/* Left half — text */}
                     <div className="w-full md:w-1/2 p-12 md:p-20">
                         {/* Badge pill */}
@@ -34,7 +34,7 @@ export function PromoBanner() {
                             {/* CTA */}
                             <Link
                                 href="/nos-voitures"
-                                className="bg-white text-[#00256f] px-8 py-4 rounded-lg font-bold hover:bg-[#92abff] hover:text-white transition-colors"
+                                className="bg-white text-[var(--color-primary)] px-8 py-4 rounded-lg font-bold hover:bg-white/80 transition-colors"
                             >
                                 Voir les offres
                             </Link>

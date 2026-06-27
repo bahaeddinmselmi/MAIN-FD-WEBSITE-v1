@@ -50,7 +50,7 @@ export function CarCard({
                 />
                 {/* Category badge */}
                 {category && (
-                    <span className="absolute top-4 left-4 bg-[#00256f] px-3 py-1.5 text-white font-bold text-[11px] uppercase tracking-wider rounded-md">
+                    <span className="absolute top-4 left-4 bg-[var(--color-primary)] px-3 py-1.5 text-white font-bold text-[11px] uppercase tracking-wider rounded-md">
                         {category}
                     </span>
                 )}
@@ -69,28 +69,28 @@ export function CarCard({
                 {/* Specs grid — 2 columns of icon+text */}
                 <div className="grid grid-cols-2 gap-x-4 gap-y-2 mb-4 text-[13px] text-[#444651]">
                     <div className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-base text-[#00256f]">airline_seat_recline_normal</span>
+                        <span className="material-symbols-outlined text-base text-[var(--color-primary)]">airline_seat_recline_normal</span>
                         {seats} places
                     </div>
                     <div className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-base text-[#00256f]">sensor_door</span>
+                        <span className="material-symbols-outlined text-base text-[var(--color-primary)]">sensor_door</span>
                         {doors}
                     </div>
                     <div className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-base text-[#00256f]">settings</span>
+                        <span className="material-symbols-outlined text-base text-[var(--color-primary)]">settings</span>
                         {transmission}
                     </div>
                     <div className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-base text-[#00256f]">local_gas_station</span>
+                        <span className="material-symbols-outlined text-base text-[var(--color-primary)]">local_gas_station</span>
                         {fuel}
                     </div>
                     <div className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-base text-[#00256f]">ac_unit</span>
+                        <span className="material-symbols-outlined text-base text-[var(--color-primary)]">ac_unit</span>
                         Climatisation
                     </div>
                     {caution && (
                         <div className="flex items-center gap-2">
-                            <span className="material-symbols-outlined text-base text-[#00256f]">shield</span>
+                            <span className="material-symbols-outlined text-base text-[var(--color-primary)]">shield</span>
                             {caution}
                         </div>
                     )}
@@ -117,7 +117,7 @@ export function CarCard({
                     {/* CTA */}
                     <Link
                         href={`/rental/${citySlug}/${slug}`}
-                        className="block w-full py-3.5 bg-[#00256f] text-white font-bold rounded-lg text-center text-sm uppercase tracking-wider hover:bg-[#1a3c8f] transition-colors duration-300"
+                        className="block w-full py-3.5 bg-[var(--color-primary)] text-white font-bold rounded-lg text-center text-sm uppercase tracking-wider hover:bg-[var(--color-primary-container)] transition-colors duration-300"
                     >
                         Voir l&apos;offre
                     </Link>

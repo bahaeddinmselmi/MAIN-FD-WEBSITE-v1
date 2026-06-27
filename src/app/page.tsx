@@ -33,7 +33,7 @@ export default async function Home() {
                     {/* Section header */}
                     <div className="flex items-end justify-between mb-12">
                         <div>
-                            <p className="font-body text-sm font-bold tracking-widest uppercase text-[#00256f] mb-2">
+                            <p className="font-body text-sm font-bold tracking-widest uppercase text-[var(--color-primary)] mb-2">
                                 Notre Flotte
                             </p>
                             <h2 className="font-headline text-3xl md:text-4xl font-extrabold text-[#191c1e]">
@@ -42,7 +42,7 @@ export default async function Home() {
                         </div>
                         <Link
                             href="/nos-voitures"
-                            className="hidden md:flex items-center gap-2 text-[#00256f] font-bold text-sm hover:gap-4 transition-all duration-300"
+                            className="hidden md:flex items-center gap-2 text-[var(--color-primary)] font-bold text-sm hover:gap-4 transition-all duration-300"
                         >
                             Voir tout
                             <span className="material-symbols-outlined text-lg">arrow_forward</span>
@@ -77,7 +77,7 @@ export default async function Home() {
                     <div className="text-center mt-10 md:hidden">
                         <Link
                             href="/nos-voitures"
-                            className="inline-flex items-center gap-2 text-[#00256f] font-bold"
+                            className="inline-flex items-center gap-2 text-[var(--color-primary)] font-bold"
                         >
                             Voir tous les véhicules
                             <span className="material-symbols-outlined text-lg">arrow_forward</span>
@@ -100,7 +100,7 @@ export default async function Home() {
             <section className="bg-white py-20 px-4 md:px-12">
                 <div className="max-w-screen-lg mx-auto">
                     <div className="text-center mb-12">
-                        <p className="font-body text-sm font-bold tracking-widest uppercase text-[#00256f] mb-2">
+                        <p className="font-body text-sm font-bold tracking-widest uppercase text-[var(--color-primary)] mb-2">
                             Questions Fréquentes
                         </p>
                         <h2 className="font-headline text-3xl md:text-4xl font-extrabold text-[#191c1e]">
@@ -112,7 +112,7 @@ export default async function Home() {
                             <details key={i} className="group bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
                                 <summary className="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-100 transition-colors">
                                     <span className="font-bold text-gray-900 text-left pr-4">{faq.question}</span>
-                                    <span className="material-symbols-outlined text-[#00256f] transition-transform group-open:rotate-180 shrink-0">
+                                    <span className="material-symbols-outlined text-[var(--color-primary)] transition-transform group-open:rotate-180 shrink-0">
                                         expand_more
                                     </span>
                                 </summary>

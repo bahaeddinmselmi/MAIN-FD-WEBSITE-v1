@@ -115,7 +115,7 @@ export function GoogleReviews() {
         <section className="bg-white py-24">
             {/* Header */}
             <div className="max-w-screen-2xl mx-auto px-6 md:px-12 mb-12">
-                <p className="font-body text-sm font-bold tracking-widest uppercase text-[#00256f] mb-2">
+                <p className="font-body text-sm font-bold tracking-widest uppercase text-[var(--color-primary)] mb-2">
                     Avis Clients
                 </p>
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">

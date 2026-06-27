@@ -120,7 +120,7 @@ export function CarDetailClient({ car, city, citySlug, includedFeatures, options
     return (
         <>
             {/* Compact Hero */}
-            <section className="bg-[#00256f]">
+            <section className="bg-[var(--color-primary)]">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 sm:py-6">
                     <nav className="flex items-center gap-1.5 text-xs text-blue-300/70 mb-3 flex-wrap">
                         <Link href="/" className="hover:text-white transition-colors">Accueil</Link>
@@ -516,7 +516,7 @@ export function CarDetailClient({ car, city, citySlug, includedFeatures, options
             </section>
 
             {/* Trust Badges — Bottom */}
-            <section className="bg-[#00256f]">
+            <section className="bg-[var(--color-primary)]">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
                         {[

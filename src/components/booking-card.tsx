@@ -39,7 +39,7 @@ export function BookingCard({ carId, carTitle, price, city }: BookingCardProps) 
             {/* Price */}
             <div>
                 <div className="flex items-baseline gap-1">
-                    <span className="text-3xl font-black text-[#00256f]">{price} DT</span>
+                    <span className="text-3xl font-black text-[var(--color-primary)]">{price} DT</span>
                     <span className="text-[#444651] text-xs">/ 3 jours</span>
                 </div>
             </div>
@@ -85,7 +85,7 @@ export function BookingCard({ carId, carTitle, price, city }: BookingCardProps) 
             {/* CTA */}
             <button
                 onClick={handleBooking}
-                className="w-full bg-gradient-to-r from-[#00256f] to-[#1a3c8f] text-white font-bold py-4 rounded-lg shadow-lg shadow-[#00256f]/20 hover:scale-[0.98] transition-transform"
+                className="w-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-container)] text-white font-bold py-4 rounded-lg shadow-lg shadow-[var(--color-primary)]/20 hover:scale-[0.98] transition-transform"
             >
                 Réserver maintenant
             </button>
@@ -97,7 +97,7 @@ export function BookingCard({ carId, carTitle, price, city }: BookingCardProps) 
                     Assurance tous risques incluse
                 </div>
                 <div className="flex items-center gap-2 text-sm text-[#444651]">
-                    <span className="material-symbols-outlined text-[#00256f] text-lg">call</span>
+                    <span className="material-symbols-outlined text-[var(--color-primary)] text-lg">call</span>
                     <a href={telUrl} className="hover:text-[#191c1e] transition-colors">
                         Besoin d'aide ? {siteConfig.contact.phone.display}
                     </a>

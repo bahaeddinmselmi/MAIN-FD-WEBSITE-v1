@@ -5,7 +5,7 @@ import { siteConfig } from '@/lib/site-config';
 
 export function HeroSection() {
     return (
-        <section className="relative bg-[#00256f] min-h-[500px] px-6 md:px-12 py-24 flex items-center justify-center overflow-hidden">
+        <section className="relative bg-[var(--color-primary)] min-h-[500px] px-6 md:px-12 py-24 flex items-center justify-center overflow-hidden">
             {/* Background image — full cover */}
             <Image
                 src="/images/hero-bg.webp"
@@ -17,10 +17,10 @@ export function HeroSection() {
             />
 
             {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-[#00256f]/60" />
+            <div className="absolute inset-0 bg-[var(--color-primary)]/60" />
 
             {/* Gradient fade at bottom for smooth transition */}
-            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#00256f]/80 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[var(--color-primary)]/80 to-transparent" />
 
             {/* Content */}
             <div className="relative z-10 max-w-5xl text-center">

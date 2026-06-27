@@ -24,7 +24,7 @@ export function TrustBadges() {
                     {badges.map((badge, i) => (
                         <div key={i} className="flex flex-col items-center">
                             <div className="w-20 h-20 bg-[#dbe1ff] rounded-full flex items-center justify-center mb-6">
-                                <span className="material-symbols-outlined text-[#00256f] text-4xl">
+                                <span className="material-symbols-outlined text-[var(--color-primary)] text-4xl">
                                     {badge.icon}
                                 </span>
                             </div>

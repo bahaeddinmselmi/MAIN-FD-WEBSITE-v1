@@ -101,7 +101,7 @@ export default function CarGrid({ cars, filters }: CarGridProps) {
                 <p className="text-[#444651] mb-6">Essayez de modifier vos critères de recherche</p>
                 <button
                     onClick={() => window.location.reload()}
-                    className="px-6 py-3 bg-gradient-to-r from-[#00256f] to-[#1a3c8f] text-white rounded-lg font-bold hover:scale-[0.98] transition-transform"
+                    className="px-6 py-3 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-container)] text-white rounded-lg font-bold hover:scale-[0.98] transition-transform"
                 >
                     Réinitialiser les filtres
                 </button>
@@ -116,7 +116,7 @@ export default function CarGrid({ cars, filters }: CarGridProps) {
                 <p className="text-sm text-[#444651]">
                     <span className="font-bold text-[#191c1e]">{filteredCars.length}</span> véhicule{filteredCars.length > 1 ? 's' : ''}
                 </p>
-                <select className="px-4 py-2.5 bg-white border border-[#e0e3e6] rounded-lg text-sm font-medium focus:ring-2 focus:ring-[#00256f] focus:border-[#00256f] outline-none transition-all">
+                <select className="px-4 py-2.5 bg-white border border-[#e0e3e6] rounded-lg text-sm font-medium focus:ring-2 focus:ring-[var(--color-primary)] focus:border-[var(--color-primary)] outline-none transition-all">
                     <option>Prix croissant</option>
                     <option>Prix décroissant</option>
                     <option>Plus récents</option>
@@ -156,7 +156,7 @@ export default function CarGrid({ cars, filters }: CarGridProps) {
                                     </div>
                                 )}
                                 {car.category && (
-                                    <span className="absolute top-4 left-4 bg-[#00256f] px-3 py-1.5 text-white font-bold text-[11px] uppercase tracking-wider rounded-md">
+                                    <span className="absolute top-4 left-4 bg-[var(--color-primary)] px-3 py-1.5 text-white font-bold text-[11px] uppercase tracking-wider rounded-md">
                                         {car.category}
                                     </span>
                                 )}
@@ -175,19 +175,19 @@ export default function CarGrid({ cars, filters }: CarGridProps) {
                                 {/* Specs */}
                                 <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 mb-4 text-[12px] text-[#444651]">
                                     <div className="flex items-center gap-1.5">
-                                        <span className="material-symbols-outlined text-sm text-[#00256f]">airline_seat_recline_normal</span>
+                                        <span className="material-symbols-outlined text-sm text-[var(--color-primary)]">airline_seat_recline_normal</span>
                                         {seats} places
                                     </div>
                                     <div className="flex items-center gap-1.5">
-                                        <span className="material-symbols-outlined text-sm text-[#00256f]">sensor_door</span>
+                                        <span className="material-symbols-outlined text-sm text-[var(--color-primary)]">sensor_door</span>
                                         {doors}
                                     </div>
                                     <div className="flex items-center gap-1.5">
-                                        <span className="material-symbols-outlined text-sm text-[#00256f]">settings</span>
+                                        <span className="material-symbols-outlined text-sm text-[var(--color-primary)]">settings</span>
                                         {transmission}
                                     </div>
                                     <div className="flex items-center gap-1.5">
-                                        <span className="material-symbols-outlined text-sm text-[#00256f]">local_gas_station</span>
+                                        <span className="material-symbols-outlined text-sm text-[var(--color-primary)]">local_gas_station</span>
                                         {fuel}
                                     </div>
                                 </div>
@@ -213,7 +213,7 @@ export default function CarGrid({ cars, filters }: CarGridProps) {
                                     {/* CTA */}
                                     <button
                                         onClick={() => handleBookNow(car)}
-                                        className="block w-full py-3 bg-[#00256f] text-white font-bold rounded-lg text-center text-sm uppercase tracking-wider hover:bg-[#1a3c8f] transition-colors duration-300"
+                                        className="block w-full py-3 bg-[var(--color-primary)] text-white font-bold rounded-lg text-center text-sm uppercase tracking-wider hover:bg-[var(--color-primary-container)] transition-colors duration-300"
                                     >
                                         Voir l&apos;offre
                                     </button>

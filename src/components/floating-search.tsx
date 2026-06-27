@@ -63,12 +63,12 @@ export function FloatingSearch() {
                     <div className="relative">
                         <label className="label">Lieu de prise en charge</label>
                         <div className="relative">
-                            <span className="material-symbols-outlined absolute left-0 bottom-2 text-[#00256f] text-xl">
+                            <span className="material-symbols-outlined absolute left-0 bottom-2 text-[var(--color-primary)] text-xl">
                                 location_on
                             </span>
                             <button
                                 onClick={() => setShowLocationDropdown(!showLocationDropdown)}
-                                className="w-full text-left py-2 pl-7 bg-transparent border-b-2 border-[#e0e3e6] focus:border-[#00256f] font-semibold text-[#191c1e] text-sm transition-colors"
+                                className="w-full text-left py-2 pl-7 bg-transparent border-b-2 border-[#e0e3e6] focus:border-[var(--color-primary)] font-semibold text-[#191c1e] text-sm transition-colors"
                             >
                                 {location}
                             </button>
@@ -96,10 +96,10 @@ export function FloatingSearch() {
                     <div>
                         <label className="label">Date de depart</label>
                         <div className="relative">
-                            <span className="material-symbols-outlined absolute left-0 bottom-2 text-[#00256f] text-xl">
+                            <span className="material-symbols-outlined absolute left-0 bottom-2 text-[var(--color-primary)] text-xl">
                                 calendar_today
                             </span>
-                            <div className="py-2 pl-7 border-b-2 border-[#e0e3e6] focus-within:border-[#00256f] transition-colors">
+                            <div className="py-2 pl-7 border-b-2 border-[#e0e3e6] focus-within:border-[var(--color-primary)] transition-colors">
                                 <DatePicker
                                     value={pickupDate}
                                     onChange={setPickupDate}
@@ -113,10 +113,10 @@ export function FloatingSearch() {
                     <div>
                         <label className="label">Date de retour</label>
                         <div className="relative">
-                            <span className="material-symbols-outlined absolute left-0 bottom-2 text-[#00256f] text-xl">
+                            <span className="material-symbols-outlined absolute left-0 bottom-2 text-[var(--color-primary)] text-xl">
                                 calendar_today
                             </span>
-                            <div className="py-2 pl-7 border-b-2 border-[#e0e3e6] focus-within:border-[#00256f] transition-colors">
+                            <div className="py-2 pl-7 border-b-2 border-[#e0e3e6] focus-within:border-[var(--color-primary)] transition-colors">
                                 <DatePicker
                                     value={returnDate}
                                     onChange={setReturnDate}
@@ -130,7 +130,7 @@ export function FloatingSearch() {
                     <div className="flex items-end">
                         <button
                             onClick={handleSearch}
-                            className="w-full bg-gradient-to-r from-[#00256f] to-[#1a3c8f] text-white font-bold py-4 rounded-lg shadow-lg shadow-[#00256f]/20 hover:scale-[0.98] transition-transform flex items-center justify-center gap-2 uppercase tracking-wider text-sm"
+                            className="w-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-container)] text-white font-bold py-4 rounded-lg shadow-lg shadow-[var(--color-primary)]/20 hover:scale-[0.98] transition-transform flex items-center justify-center gap-2 uppercase tracking-wider text-sm"
                         >
                             <span className="material-symbols-outlined text-xl">search</span>
                             Rechercher
