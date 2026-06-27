@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const BACKEND_API_URL = process.env.BACKEND_API_URL || 'http://localhost:3001/api/v1';
-const SITE_SLUG = process.env.SITE_SLUG || 'locationvoitures-tunisie';
-const SITE_API_KEY = process.env.SITE_API_KEY || '';
+// Vercel injects a leading U+FEFF BOM into env var values — strip it everywhere.
+const stripBom = (s: string) => s.replace(/^﻿/, '').trim();
+
+const BACKEND_API_URL = stripBom(process.env.BACKEND_API_URL || 'http://localhost:3001/api/v1');
+const SITE_SLUG      = stripBom(process.env.SITE_SLUG      || 'location-voiture-tunisie-24-7');
+const SITE_API_KEY   = stripBom(process.env.SITE_API_KEY   || '');
 
 /**
  * POST /api/bookings
@@ -21,10 +24,21 @@ export async function POST(request: NextRequest) {
 
         // Basic honeypot check
         if (body.website) {
-            return NextResponse.json(
-                { error: 'Invalid submission' },
-                { status: 400 }
-            );
+            return NextResponse.json({ error: 'Invalid submission' }, { status: 400 });
+        }
+
+        // Early validation for required date fields and UUID carId
+        const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+        const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+        if (!body.pickupDate || !dateRegex.test(body.pickupDate)) {
+            return NextResponse.json({ error: 'Date de prise en charge requise (YYYY-MM-DD)' }, { status: 400 });
+        }
+        if (!body.returnDate || !dateRegex.test(body.returnDate)) {
+            return NextResponse.json({ error: 'Date de retour requise (YYYY-MM-DD)' }, { status: 400 });
+        }
+        if (!body.carId || !uuidRegex.test(body.carId)) {
+            return NextResponse.json({ error: 'Véhicule invalide. Veuillez sélectionner un véhicule depuis la liste.' }, { status: 400 });
         }
 
         // Resolve upsell slugs to UUIDs if any were selected

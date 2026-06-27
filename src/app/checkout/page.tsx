@@ -186,6 +186,16 @@ function CheckoutContent() {
             return;
         }
 
+        // Validate required booking state before submitting
+        if (!booking.pickupDate || !booking.returnDate) {
+            setError('Veuillez sélectionner vos dates de prise en charge et de retour.');
+            return;
+        }
+        if (!car) {
+            setError('Aucun véhicule sélectionné. Veuillez choisir un véhicule.');
+            return;
+        }
+
         setLoading(true);
         setError('');
 
